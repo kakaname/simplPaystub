@@ -5,6 +5,10 @@ import tkinter as tk
 from tkinter import Tk
 from tkinter.filedialog import askopenfilename
 from openpyxl import load_workbook
+import os
+import os.path
+
+
 
 thick_top = Border(left=Side(style='thin'), 
                      right=Side(style='thin'), 
@@ -57,23 +61,37 @@ def getPrevFile():
 
     if None != ws["H30"].value:
         tax = float(ws["H30"].value)
+
     elif None != ws["H10"].value:
+
         tax = float(ws["H10"].value)
+
 
     if None != ws["H31"].value:
         cpp = float(ws["H31"].value)
     elif None != ws["H11"].value:
+
         cpp = float(ws["H11"].value)
+
+
 
     if None != ws["H32"].value:
         ei = float(ws["H32"].value)
+
     elif None != ws["H12"].value:
+
         ei = float(ws["H12"].value)
+
+
 
     YTDWage = wage
     YTDTax = tax
+
     YTDCpp = cpp
+
     YTDEi = ei
+
+
 
 
     
@@ -319,7 +337,15 @@ def writeFile(ws,col,row, value):
     
 
 def main():
+
+    folder = "sheets"
+    os.chdir(".")
+
+    if not os.path.isdir(folder):
+        os.mkdir(folder)
+
     createGUI()
+
 
 
 
